@@ -38,7 +38,8 @@ class ExtendedHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 try:
                     css_data = sass.compile(filename=scss_path)
                     data = css_data.encode()
-                except sass.CompileError:
+                except sass.CompileError as e:
+                    print(f'.scss compilation error: {e}')
                     raise IOError
             else:
                 raise e

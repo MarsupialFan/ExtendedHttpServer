@@ -25,6 +25,7 @@ class ExtendedHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         """
 
         try:
+            path = path.replace('%20', ' ')
             with open(path, 'rb') as file:
                 data = file.read()
         except IOError as e:
